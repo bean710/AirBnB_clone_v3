@@ -3,7 +3,7 @@
 API status module
 """
 
-from flask import Flask
+from flask import Flask, jsonify, make_response
 from models import storage
 from api.v1.views import app_views
 from os import getenv
@@ -18,6 +18,14 @@ def close_storage(self):
     Closes the storage
     """
     storage.close()
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """
+    Handles page not found (Error 404)
+    """
+    return make_response(jsonify({'error': 'Not found'}), 404)
 
 
 if __name__ == "__main__":

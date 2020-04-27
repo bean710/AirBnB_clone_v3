@@ -13,4 +13,3 @@ def all_states():
     return jsonify([v.to_dict() for k, v in storage.all().items()])
 
 
-@app_views.route("/states/<state_id>", methods)

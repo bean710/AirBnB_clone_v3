@@ -68,9 +68,9 @@ test_file_storage.py'])
                             "{:s} method needs a docstring".format(func[0]))
 
 
+@unittest.skipIf(models.storage_t == 'db', "not testing file storage")
 class TestFileStorage(unittest.TestCase):
     """Test the FileStorage class"""
-    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
     def test_all_returns_dict(self):
         """Test that all returns the FileStorage.__objects attr"""
         storage = FileStorage()
@@ -78,7 +78,6 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(type(new_dict), dict)
         self.assertIs(new_dict, storage._FileStorage__objects)
 
-    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
     def test_new(self):
         """test that new adds an object to the FileStorage.__objects attr"""
         storage = FileStorage()
@@ -94,7 +93,6 @@ class TestFileStorage(unittest.TestCase):
                 self.assertEqual(test_dict, storage._FileStorage__objects)
         FileStorage._FileStorage__objects = save
 
-    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
     def test_save(self):
         """Test that save properly saves objects to file.json"""
         storage = FileStorage()
@@ -113,3 +111,44 @@ class TestFileStorage(unittest.TestCase):
         with open("file.json", "r") as f:
             js = f.read()
         self.assertEqual(json.loads(string), json.loads(js))
+
+    def test_get(self):
+        """Tests the get method"""
+        storage = FileStorage()
+        save = FileStorage._FileStorage__objects
+        FileStorage._FileStorage__objects = {}
+
+        new_state = State(name="FooBar")
+        new_bm_1 = BaseModel()
+        new_bm_2 = BaseModel()
+
+        new_state.save()
+        new_bm_1.save()
+        new_bm_2.save()
+
+        self.assertEqual(new_state.to_dict(),
+                         storage.get("State", new_state.id).to_dict())
+        self.assertIsNone(storage.get("State", "123abc"))
+
+        FileStorage._FileStorage__objects = save
+
+    def test_count(self):
+        """Tests the count method"""
+        storage = FileStorage()
+        save = FileStorage._FileStorage__objects
+        FileStorage._FileStorage__objects = {}
+
+        new_state = State(name="FooBar")
+        new_bm_1 = BaseModel()
+        new_bm_2 = BaseModel()
+
+        new_state.save()
+        new_bm_1.save()
+        new_bm_2.save()
+
+        self.assertEqual(storage.count("State"), 1)
+        self.assertEqual(storage.count("BaseModel"), 2)
+        self.assertEqual(storage.count(None), 3)
+        self.assertEqual(storage.count("City"), 0)
+
+        FileStorage._FileStorage__ojects = save

@@ -50,4 +50,21 @@ def create_state():
     storage.new(nstate)
     storage.save()
 
-    return jsonify(nstate.to_dict())
+    return jsonify(nstate.to_dict()), 201
+
+@app_views.route("/states/<state_id>", methods=["PUT"], strict_slashes=False)
+def update_state(state_id):
+    """Updates a state"""
+    state = storage.get("State", state_id)
+
+    if state is None:
+        abort(404)
+    else:
+        data = request.get_json(force=True)
+
+        for k, v in data.items():
+            if k != "id" and k != "created_at" and k != "updated_at":
+                setattr(state, k, v)
+
+        storage.save()
+        return jsonify(state.to_dict()), 200

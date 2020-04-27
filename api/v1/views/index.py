@@ -25,7 +25,7 @@ def stats():
     stats = {}
     stats["amenities"] = storage.count("Amenity")
     stats["cities"] = storage.count("City")
-    stats["places"] = storage.count("Plae")
+    stats["places"] = storage.count("Place")
     stats["reviews"] = storage.count("Review")
     stats["users"] = storage.count("User")
     return jsonify(stats)

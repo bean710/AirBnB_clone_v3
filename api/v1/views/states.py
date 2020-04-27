@@ -3,7 +3,7 @@
 
 
 from api.v1.views import app_views
-from flask import Flask, jsonify, abort
+from flask import Flask, jsonify, abort, request
 from models import storage
 from models.state import State
 
@@ -23,3 +23,31 @@ def get_state(state_id):
         abort(404)
     else:
         return jsonify(state.to_dict())
+
+
+@app_views.route("/states/<state_id>", methods=["DELETE"],
+                 strict_slashes=False)
+def del_state(state_id):
+    """Deletes a specific state"""
+    state = storage.get("State", state_id)
+
+    if state is None:
+        abort(404)
+    else:
+        storage.delete(state)
+        storage.save()
+        return jsonify({}), 200
+
+@app_views.route("/states", methods=["POST"], strict_slashes=False)
+def create_state():
+    """Creates a state"""
+    data = request.get_json()
+
+    if "name" not in data:
+        return "Missing name", 400
+
+    nstate = State(**data)
+    storage.new(nstate)
+    storage.save()
+
+    return jsonify(nstate.to_dict())

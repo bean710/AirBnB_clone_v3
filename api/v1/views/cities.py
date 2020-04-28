@@ -12,7 +12,7 @@ from models.city import City
                  strict_slashes=False)
 def retrieve_list_city(state_id):
     """Returns JSON of all of the cities"""
-    state = storage.get('State', state_id)
+    state = storage.get("State", state_id)
 
     if state is None:
         abort(404)
@@ -37,7 +37,7 @@ def retrieve_city_obj(city_id):
 @app_views.route("/cities/<city_id>", methods=["DELETE"],
                  strict_slashes=False)
 def del_city(city_id):
-    """Deletes a specific City"""
+    """Deletes a specific city"""
     city = storage.get("City", city_id)
 
     if city is None:
@@ -86,7 +86,7 @@ def update_city(city_id):
         if data is None:
             return jsonify({"error": "Not a JSON"}), 400
 
-        ignore = ['id', 'created_at', 'state_id']
+        ignore = ["id", "created_at", "state_id"]
         for k, v in data.items():
             if k not in ignore:
                 setattr(city, k, v)

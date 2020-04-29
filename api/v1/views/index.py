@@ -25,6 +25,7 @@ def stats():
     stats = {}
     stats["amenities"] = storage.count("Amenity")
     stats["cities"] = storage.count("City")
+    stats["states"] = storage.count("State")
     stats["places"] = storage.count("Place")
     stats["reviews"] = storage.count("Review")
     stats["users"] = storage.count("User")

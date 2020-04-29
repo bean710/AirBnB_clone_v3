@@ -76,10 +76,10 @@ class FileStorage:
             return len(self.all())
 
         if cls in classes.keys():
-            return self.all(classes[cls])
+            return len(self.all(classes[cls]))
 
         if cls in classes.values():
-            return self.all(cls)
+            return len(self.all(cls))
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""

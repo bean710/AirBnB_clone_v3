@@ -22,6 +22,7 @@ responses:
 definitions:
     State:
         type: object
+        description: Output format for a State
         properties:
             id:
                 description: The unique id of the state
@@ -29,6 +30,25 @@ definitions:
             __class__:
                 description: The class (Should always be "State")
                 type: string
+            name:
+                description: The full name of the state
+                type: string
+            created_at:
+                description: The time the State was created at. Formatted in YY-MM-DD:hh:mm:ss.ms
+                type: string
+            updated_at:
+                description: The time the State was last updated. Formatted in YY-MM-DD:hh:mm:ss.ms
+                type: string
+        example:
+            id: a695f21c-d80f-45d4-8ee0-19f952e9cbd9
+            __class__: State
+            name: Pennsylvania
+            created_at: "2020-04-23T00:22:48.000000"
+            updated_at: "2020-04-23T00:23:37.000000"
+    StateIn:
+        type: object
+        description: Input format for a State
+        properties:
             name:
                 description: The full name of the state
                 type: string
@@ -40,8 +60,6 @@ definitions:
                 description: The time the State was last updated. Formatted in YY-MM-DD:hh:mm:ss.ms
                 type: string
         example:
-            id: a695f21c-d80f-45d4-8ee0-19f952e9cbd9
-            __class__: State
             name: Pennsylvania
             created_at: "2020-04-23T00:22:48.000000"
             updated_at: "2020-04-23T00:23:37.000000"

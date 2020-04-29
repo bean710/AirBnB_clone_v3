@@ -1,0 +1,18 @@
+Updates a state given an ID
+---
+parameters:
+  - name: state_id
+    in: path
+    required: true
+  - name: body
+    in: body
+    required: true
+    schema:
+        $ref: "#/definitions/StateIn"
+responses:
+    200: 
+        description: Successfully updated a state
+        content:
+            $ref: '#/definitions/State'
+    404:
+        description: Could not find state with that ID

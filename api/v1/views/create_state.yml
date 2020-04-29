@@ -1,12 +1,11 @@
 Creates a state given a name
 ---
-requestBody:
+parameters:
+  - name: body
+    in: body
     required: true
-    description: "Foo"
-    content:
-        'application/json':
-            schema:
-                $ref: '#/definitions/State'
+    schema:
+        $ref: "#/definitions/StateIn"
 responses:
     201: 
         description: Successfully created state

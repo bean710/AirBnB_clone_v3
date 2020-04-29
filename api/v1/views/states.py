@@ -62,6 +62,7 @@ def create_state():
 
 
 @app_views.route("/states/<state_id>", methods=["PUT"], strict_slashes=False)
+@swag_from("update_state.yml")
 def update_state(state_id):
     """Updates a state"""
     state = storage.get("State", state_id)

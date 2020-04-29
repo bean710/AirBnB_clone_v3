@@ -55,6 +55,8 @@ def create_place(city_id):
         abort(404)
 
     data = request.get_json()
+    if data is None:
+        return jsonify({"error": "Not a JSON"}), 400
     if "user_id" not in data:
         return jsonify({"error": "Missing user_id"}), 400
     if "name" not in data:

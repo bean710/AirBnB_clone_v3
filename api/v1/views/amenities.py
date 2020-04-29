@@ -50,12 +50,16 @@ def create_amenity():
 
     namenity = Amenity(**data)
     storage.new(namenity)
+    storage.save()
+
+    return jsonify(namenity.to_dict()), 201
 
 
-@app_views.route("/amenity/<amenity_id>", methods=["PUT"], strict_slashes=False)
+@app_views.route("/amenities/<amenity_id>", methods=["PUT"],
+                 strict_slashes=False)
 def update_amenity(amenity_id):
     """Updates a amenity"""
-    amenity = storage.get("State", amenity_id)
+    amenity = storage.get("Amenity", amenity_id)
 
     if amenity is None:
         abort(404)

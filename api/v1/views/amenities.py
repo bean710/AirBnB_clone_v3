@@ -45,8 +45,35 @@ def create_amenity():
     """Creates an amenity"""
     data = request.get_json()
 
+    if data is None:
+        return jsonify({"error": "Not a JSON"}), 400
     if "name" not in data:
-        return "Missing name", 400
+        return jsonify({"error": "Missing name"}), 400
 
     namenity = Amenity(**data)
     storage.new(namenity)
+    storage.save()
+
+    return jsonify(namenity.to_dict()), 201
+
+
+@app_views.route("/amenities/<amenity_id>", methods=["PUT"],
+                 strict_slashes=False)
+def update_amenity(amenity_id):
+    """Updates a amenity"""
+    amenity = storage.get("Amenity", amenity_id)
+
+    if amenity is None:
+        abort(404)
+    else:
+        data = request.get_json(force=True)
+
+        if data is None:
+            return jsonify({"error": "Not a JSON"}), 400
+
+        for k, v in data.items():
+            if k != "id" and k != "created_at" and k != "updated_at":
+                setattr(amenity, k, v)
+
+        storage.save()
+        return jsonify(amenity.to_dict()), 200

@@ -28,4 +28,4 @@ def stats():
     stats["places"] = storage.count("Place")
     stats["reviews"] = storage.count("Review")
     stats["users"] = storage.count("User")
-    return jsonify(stats)
+    return jsonify(stats), 200

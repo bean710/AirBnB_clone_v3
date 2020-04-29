@@ -49,9 +49,15 @@ class FileStorage:
         if cls is None or id is None:
             return None
 
-        for key, value in self.__objects.items():
-            if key == "{}.{}".format(cls, id):
-                return value
+        if cls in classes.keys():
+            for key, value in self.__objects.items():
+                if key == "{}.{}".format(cls, id):
+                    return value
+
+        if cls in classes.values():
+            for key, value in self.__objects.items():
+                if key == "{}.{}".format(cls.__name__, id):
+                    return value
 
         return None
 
@@ -69,7 +75,11 @@ class FileStorage:
         if cls is None:
             return len(self.all())
 
-        return self.all(classes[cls])
+        if cls in classes.keys():
+            return self.all(classes[cls])
+
+        if cls in classes.values():
+            return self.all(cls)
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""

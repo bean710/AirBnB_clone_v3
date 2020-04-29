@@ -45,8 +45,10 @@ def create_amenity():
     """Creates an amenity"""
     data = request.get_json()
 
+    if data is None:
+        return jsonify({"error": "Not a JSON"}), 400
     if "name" not in data:
-        return "Missing name", 400
+        return jsonify({"error": "Missing name"}), 400
 
     namenity = Amenity(**data)
     storage.new(namenity)

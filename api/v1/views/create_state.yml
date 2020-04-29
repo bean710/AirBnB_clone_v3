@@ -1,0 +1,14 @@
+Creates a state given a name
+---
+requestBody:
+    required: true
+    description: "Foo"
+    content:
+        'application/json':
+            schema:
+                $ref: '#/definitions/State'
+responses:
+    201: 
+        description: Successfully created state
+    400:
+        description: \'name\' was not found in the parameters

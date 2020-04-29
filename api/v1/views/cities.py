@@ -11,7 +11,20 @@ from models.city import City
 @app_views.route("/states/<state_id>/cities", methods=["GET"],
                  strict_slashes=False)
 def retrieve_list_city(state_id):
-    """Returns JSON of all of the cities"""
+    """Returns JSON of all of the cities
+    This lists all cities within a certain city
+    ---
+    parameters:
+        - name: state_id
+          in: path
+          type: string
+          required: true
+    responses:
+        404:
+            description: State not found
+        200:
+            description: The state object sucessfully returned
+    """
     state = storage.get("State", state_id)
 
     if state is None:

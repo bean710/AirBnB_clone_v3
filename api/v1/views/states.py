@@ -6,15 +6,20 @@ from api.v1.views import app_views
 from flask import Flask, jsonify, abort, request
 from models import storage
 from models.state import State
+from flasgger import swag_from
 
 
 @app_views.route("/states", methods=["GET"], strict_slashes=False)
+@swag_from("all_states.yml")
 def all_states():
-    """Returns JSON of all of the states"""
+    """Returns JSON of all of the states
+    file: all_states.yml
+    """
     return jsonify([v.to_dict() for k, v in storage.all(State).items()])
 
 
 @app_views.route("/states/<state_id>", methods=["GET"], strict_slashes=False)
+@swag_from("get_state.yml")
 def get_state(state_id):
     """Returns a specific state"""
     state = storage.get("State", state_id)
@@ -27,6 +32,7 @@ def get_state(state_id):
 
 @app_views.route("/states/<state_id>", methods=["DELETE"],
                  strict_slashes=False)
+@swag_from("del_state.yml")
 def del_state(state_id):
     """Deletes a specific state"""
     state = storage.get("State", state_id)
@@ -39,6 +45,7 @@ def del_state(state_id):
         return jsonify({}), 200
 
 @app_views.route("/states", methods=["POST"], strict_slashes=False)
+@swag_from("create_state.yml")
 def create_state():
     """Creates a state"""
     data = request.get_json()

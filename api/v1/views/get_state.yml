@@ -1,0 +1,14 @@
+Get one city by id
+---
+parameters:
+  - name: state_id
+    in: path
+    type: string
+    required: true
+responses:
+    200:
+        description: A state object
+        schema:
+            $ref: '#/definitions/State'
+    404:
+        description: State not found with that id

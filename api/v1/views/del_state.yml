@@ -1,0 +1,14 @@
+Delete a state by id
+---
+parameters:
+    - name: state_id
+      type: string
+      in: path
+      required: true
+responses:
+    200:
+        description: Deleted successfully
+        schema:
+            $ref: '#/definitions/State'
+    404:
+        description: State not found with that id

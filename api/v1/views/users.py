@@ -38,6 +38,7 @@ def del_user(user_id):
         storage.save()
         return jsonify({}), 200
 
+
 @app_views.route("/users", methods=["POST"], strict_slashes=False)
 def create_user():
     """Creates a user"""
@@ -51,6 +52,7 @@ def create_user():
     storage.save()
 
     return jsonify(nuser.to_dict()), 201
+
 
 @app_views.route("/users/<user_id>", methods=["PUT"], strict_slashes=False)
 def update_user(user_id):

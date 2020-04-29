@@ -45,6 +45,7 @@ def del_place(place_id):
         storage.save()
         return jsonify({}), 200
 
+
 @app_views.route("/cities/<city_id>/places", methods=["POST"],
                  strict_slashes=False)
 def create_place(city_id):
@@ -69,6 +70,7 @@ def create_place(city_id):
     storage.save()
 
     return jsonify(nplace.to_dict()), 201
+
 
 @app_views.route("/places/<place_id>", methods=["PUT"], strict_slashes=False)
 def update_place(place_id):

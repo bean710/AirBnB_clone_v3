@@ -50,3 +50,24 @@ def create_amenity():
 
     namenity = Amenity(**data)
     storage.new(namenity)
+
+
+@app_views.route("/amenity/<amenity_id>", methods=["PUT"], strict_slashes=False)
+def update_amenity(amenity_id):
+    """Updates a amenity"""
+    amenity = storage.get("State", amenity_id)
+
+    if amenity is None:
+        abort(404)
+    else:
+        data = request.get_json(force=True)
+
+        if data is None:
+            return jsonify({"error": "Not a JSON"}), 400
+
+        for k, v in data.items():
+            if k != "id" and k != "created_at" and k != "updated_at":
+                setattr(amenity, k, v)
+
+        storage.save()
+        return jsonify(amenity.to_dict()), 200

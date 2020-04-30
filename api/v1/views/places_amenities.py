@@ -6,6 +6,7 @@ from api.v1.views import app_views
 from flask import Flask, jsonify, abort, request
 from models import storage
 from models.state import State
+from models.amenity import Amenity
 from flasgger import swag_from
 from os import getenv
 
@@ -22,7 +23,12 @@ def all_place_amenitiesplace_id(place_id):
     if place is None:
         abort(404)
 
-    return jsonify([a.to_dict() for a in place.amenities])
+    if storage_t == "db":
+        return jsonify([a.to_dict() for a in place.amenities])
+    else:
+        alist = storage.all(Amenity)
+        return jsonify([a.to_dict() for a in alist
+                        if a.id in place.amenity_ids])
 
 
 @app_views.route("/places/<place_id>/amenities/<amenity_id>",

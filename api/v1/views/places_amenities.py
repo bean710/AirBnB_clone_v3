@@ -25,7 +25,7 @@ def all_place_amenitiesplace_id(place_id):
     return jsonify([a.to_dict() for a in place.amenities])
 
 
-@app_views.route("/places/<place_id>/amenities/<amenity_id>",\
+@app_views.route("/places/<place_id>/amenities/<amenity_id>",
                  methods=["DELETE"], strict_slashes=False)
 def del_place_amenity(place_id, amenity_id):
     """Deletes an amenity from a place"""
@@ -51,7 +51,8 @@ def del_place_amenity(place_id, amenity_id):
     return jsonify({}), 200
 
 
-@app_views.route("/places/<place_id>/amenities/<amenity_id>")
+@app_views.route("/places/<place_id>/amenities/<amenity_id>",
+                 methods=["PUT"], strict_slashes=False)
 def link_to_place(place_id, amenity_id):
     """Links an amenity to a place"""
     place = storage.get("Place", place_id)
@@ -68,4 +69,5 @@ def link_to_place(place_id, amenity_id):
         return jsonify(amenity.to_dict()), 200
     else:
         place.amenities.append(amenity if storage_t == "db" else amenity_id)
+        storage.save()
         return jsonify(amenity.to_dict()), 201

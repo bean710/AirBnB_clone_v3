@@ -103,3 +103,43 @@ def update_place(place_id):
 
         storage.save()
         return jsonify(place.to_dict()), 200
+
+
+@app_views.route("/places_search", methods=["POST"], strict_slashes=False)
+def search_place():
+    """Searches for a place from any city"""
+    data = request.get_json()
+    if data is None:
+        return jsonify({"error": "Not a JSON"}), 400
+
+    pset = set()
+
+    if "states" in data:
+        states_s = [storage.get("State", sid) for sid in data["states"]]
+        states = [s for s in states_s if s is not None]
+        for state in states:
+            for city in state.cities:
+                pset.update(set(city.places))
+
+    if "cities" in data:
+        cities_s = [storage.get("City", cid) for cid in data["cities"]]
+        cities = [c for c in cities_s if c is not None]
+        for city in cities:
+            for place in city.places:
+                if place not in pset:
+                    pset.add(place)
+
+    if "amenities" in data:
+        amenities = [storage.get("Amenity", aid) for aid in data["amenities"]]
+        plist = [p for p in pset if
+                 all(am in p.amenities for am in amenities)]
+    else:
+        plist = list(pset)
+
+    #dict_plist = [storage.get("Place", pl.id).to_dict() for pl in plist]
+    dict_plist = [pl.to_dict() for pl in plist]
+    for pdict in dict_plist:
+        if "amenities" in pdict:
+            del pdict["amenities"]
+    print(dict_plist)
+    return jsonify(dict_plist)

@@ -137,7 +137,6 @@ def search_place():
     else:
         plist = list(pset)
 
-    #dict_plist = [storage.get("Place", pl.id).to_dict() for pl in plist]
     dict_plist = [pl.to_dict() for pl in plist]
     for pdict in dict_plist:
         if "amenities" in pdict:

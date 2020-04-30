@@ -1,0 +1,14 @@
+Delete a City by id
+---
+parameters:
+    - name: city_id
+      type: string
+      in: path
+      required: true
+responses:
+    200:
+        description: Deleted successfully
+        schema:
+            $ref: '#/definitions/City'
+    404:
+        description: City not found with that id

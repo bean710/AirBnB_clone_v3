@@ -1,0 +1,30 @@
+Creates a City given at least a name
+---
+parameters:
+  - name: state_id
+    in: path
+    required: true
+    description: The id of the State for the new City to be in
+  - name: body
+    in: body
+    required: true
+    schema:
+        type: object
+        description: Required properties to create a state
+        properties:
+            name:
+                required: true
+                type: string
+                description: The name of the new City
+        example:
+            name: Lancaster
+    description: The properties for this new City to have. Note that any City property can be defined here, only 'name' is required.
+responses:
+    201: 
+        description: Successfully created City
+        schema:
+            $ref: '#/definitions/City'
+    400:
+        description: \'name\' was not found in the parameters or the JSON is invalid
+    404:
+        description: \'state_id\' was not a valid State id

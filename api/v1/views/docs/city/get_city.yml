@@ -1,7 +1,7 @@
-Get one State by id
+Get one City by id
 ---
 parameters:
-  - name: state_id
+  - name: city_id
     in: path
     type: string
     required: true
@@ -9,6 +9,6 @@ responses:
     200:
         description: A state object
         schema:
-            $ref: '#/definitions/State'
+            $ref: '#/definitions/City'
     404:
-        description: State not found with that id
+        description: City not found with that id

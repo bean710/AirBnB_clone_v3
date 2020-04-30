@@ -1,0 +1,58 @@
+This lists all of the cities associated with a specific state.
+---
+parameters:
+    - name: state_id
+      in: path
+      type: string
+      required: true
+responses:
+    200:
+        description: A list of cities associated with the state
+        schema:
+            type: array
+            items:
+                $ref: '#/definitions/City'
+            example:
+                - state_id: 421a55f4-7d82-47d9-b52c-a76916479547
+                  id: 44af1ce6-efa4-4ed1-a8fa-ce9101a2f6de
+                  name: Lancaster
+                  __class__: City
+                  created_at: "2020-04-23T00:22:48.000000"
+                  updated_at: "2020-04-23T00:23:37.000000"
+                - state_id: 421a55f4-7d82-47d9-b52c-a76916479547
+                  id: a695f21c-d80f-45d4-8ee0-19f952e9cbd9
+                  name: Marietta
+                  __class__: City
+                  created_at: "2020-04-23T00:22:40.000000"
+                  updated_at: "2020-04-26T05:13:39.000000"
+
+definitions:
+    City:
+        type: object
+        description: Output format for a City
+        properties:
+            id:
+                description: The unique id of the city
+                type: string
+            state_id:
+                description: The unique if of the State the City is in
+                type: string
+            __class__:
+                description: The class (Should always be "City")
+                type: string
+            name:
+                description: The full name of the City
+                type: string
+            created_at:
+                description: The time the City was created at. Formatted in YY-MM-DD:hh:mm:ss.ms
+                type: string
+            updated_at:
+                description: The time the City was last updated. Formatted in YY-MM-DD:hh:mm:ss.ms
+                type: string
+        example:
+            state_id: a695f21c-d80f-45d4-8ee0-19f952e9cbd9
+            id: 44af1ce6-efa4-4ed1-a8fa-ce9101a2f6de
+            __class__: City
+            name: Lancaster
+            created_at: "2020-04-23T00:32:48.000000"
+            updated_at: "2020-04-23T00:33:37.000000"

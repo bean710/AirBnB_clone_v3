@@ -1,0 +1,26 @@
+Updates a city given an ID
+---
+parameters:
+  - name: city_id
+    in: path
+    required: true
+  - name: body
+    in: body
+    required: true
+    schema:
+        type: object
+        description: Example values to update a City
+        properties:
+            name:
+                type: String
+                description: The (new) name for the City
+                example: Harrisburg
+responses:
+    200: 
+        description: Successfully updated the City
+        schema:
+            $ref: '#/definitions/City'
+    400:
+        description: The provided JSON is not valid
+    404:
+        description: Could not find a City with that ID

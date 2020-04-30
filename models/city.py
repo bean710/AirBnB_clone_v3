@@ -19,6 +19,17 @@ class City(BaseModel, Base):
         state_id = ""
         name = ""
 
+        @property
+        def state(self):
+            """Gets the state"""
+            return models.storage.get("State", self.state_id)
+
+        @property
+        def places(self):
+            """Gets a list of places in the city"""
+            return [p for p in models.storage.all("Place")
+                    if p.city_id == self.id]
+
     def __init__(self, *args, **kwargs):
         """initializes city"""
         super().__init__(*args, **kwargs)

@@ -76,6 +76,7 @@ def create_place(city_id):
     if user is None:
         abort(404)
 
+    data["city_id"] = city_id
     nplace = Place(**data)
     storage.new(nplace)
     storage.save()

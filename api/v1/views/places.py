@@ -142,5 +142,5 @@ def search_place():
     for pdict in dict_plist:
         if "amenities" in pdict:
             del pdict["amenities"]
-    print(dict_plist)
+
     return jsonify(dict_plist)

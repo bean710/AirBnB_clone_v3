@@ -23,12 +23,7 @@ def all_place_amenitiesplace_id(place_id):
     if place is None:
         abort(404)
 
-    if storage_t == "db":
-        return jsonify([a.to_dict() for a in place.amenities])
-    else:
-        alist = storage.all(Amenity)
-        return jsonify([a.to_dict() for a in alist
-                        if a.id in place.amenity_ids])
+    return jsonify([a.to_dict() for a in place.amenities])
 
 
 @app_views.route("/places/<place_id>/amenities/<amenity_id>",

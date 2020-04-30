@@ -62,10 +62,17 @@ class DBStorage:
             The searched-for object if found, otherwise None
         """
 
-        if cls is None or id is None or cls not in classes:
+        if cls is None or id is None or\
+           (cls not in classes and cls not in classes.values()):
             return None
 
-        return self.__session.query(classes[cls]).get(id)
+        if cls in classes:
+            return self.__session.query(classes[cls]).get(id)
+
+        if cls in classes.values():
+            return self.__session.query(cls).get(id)
+
+        return None
 
     def count(self, cls=None):
         """Gets the number of objects of a certain class, or the number of all
@@ -79,13 +86,13 @@ class DBStorage:
         """
 
         if cls is None:
-            total = 0
-            for clss in classes.items():
-                total += len(self.__session.query(classes[clss]).all())
-            return total
+            return len(self.all())
 
         if cls in classes:
-            return len(self.__session.query(classes[cls]).all())
+            return len(self.all(classes[cls]))
+
+        if cls in classes.values():
+            return len(self.all(cls))
 
     def new(self, obj):
         """add the object to the current database session"""

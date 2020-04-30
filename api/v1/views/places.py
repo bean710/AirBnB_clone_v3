@@ -130,6 +130,9 @@ def search_place():
                 if place not in pset:
                     pset.add(place)
 
+    if len(pset) == 0:
+        pset = storage.all("Place").values()
+
     if "amenities" in data:
         amenities = [storage.get("Amenity", aid) for aid in data["amenities"]]
         plist = [p for p in pset if

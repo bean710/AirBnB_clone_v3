@@ -27,7 +27,7 @@ class City(BaseModel, Base):
         @property
         def places(self):
             """Gets a list of places in the city"""
-            return [p for p in models.storage.all("Place")
+            return [p for p in models.storage.all("Place").values()
                     if p.city_id == self.id]
 
     def __init__(self, *args, **kwargs):

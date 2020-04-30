@@ -7,6 +7,10 @@ from flask import Flask, jsonify, abort, request
 from models import storage
 from models.place import Place
 from models.city import City
+from os import getenv
+
+
+storage_t = getenv("HBNB_TYPE_STORAGE")
 
 
 @app_views.route("/cities/<city_id>/places", methods=["GET"],
@@ -18,7 +22,13 @@ def all_places(city_id):
     if city is None:
         abort(404)
 
-    return jsonify([place.to_dict() for place in city.places])
+    if storage_t == "db":
+        return jsonify([place.to_dict() for place in city.places])
+    else:
+        a_places = storage.all(Place).values()
+        places = [place.to_dict() for place in a_places
+                  if place.city_id == city_id]
+        return jsonify(places)
 
 
 @app_views.route("/places/<place_id>", methods=["GET"], strict_slashes=False)

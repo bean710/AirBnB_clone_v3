@@ -53,7 +53,7 @@ def del_place_amenity(place_id, amenity_id):
 
 
 @app_views.route("/places/<place_id>/amenities/<amenity_id>",
-                 methods=["PUT"], strict_slashes=False)
+                 methods=["POST"], strict_slashes=False)
 def link_to_place(place_id, amenity_id):
     """Links an amenity to a place"""
     place = storage.get("Place", place_id)

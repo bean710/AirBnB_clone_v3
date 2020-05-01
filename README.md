@@ -195,6 +195,8 @@ $ curl -X GET -s http://0.0.0.0:5000/api/v1/status -vvv 2>&1 | grep Content-Type
 $
 ```
 
+---
+
 #### Stats
 Retrieves the number of each objects by type  
 *On another Terminal*  
@@ -207,6 +209,38 @@ $ curl -X GET http://0.0.0.0:5000/api/v1/stats
   "reviews": 718, 
   "states": 27, 
   "users": 31
+}
+$ 
+```
+
+---
+
+#### Not Found
+Retrieves the number of each objects by type  
+*On another Terminal*  
+```
+$ curl -X GET http://0.0.0.0:5000/api/v1/nop
+{
+  "error": "Not found"
+}
+$ curl -X GET http://0.0.0.0:5000/api/v1/nop -vvv
+*   Trying 0.0.0.0...
+* TCP_NODELAY set
+* Connected to 0.0.0.0 (127.0.0.1) port 5000 (#0)
+> GET /api/v1/nop HTTP/1.1
+> Host: 0.0.0.0:5000
+> User-Agent: curl/7.51.0
+> Accept: */*
+> 
+* HTTP 1.0, assume close after body
+< HTTP/1.0 404 NOT FOUND
+< Content-Type: application/json
+< Content-Length: 27
+< Server: Werkzeug/0.12.1 Python/3.4.3
+< Date: Fri, 14 Apr 2017 23:43:24 GMT
+< 
+{
+  "error": "Not found"
 }
 $ 
 ```

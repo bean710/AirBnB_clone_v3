@@ -150,6 +150,8 @@ EOF  all  create  destroy  help  quit  show  update
 (hbnb) quit
 ```
 
+## REST API
+The REST architectural style, data and functionality are considered resources and are accessed using Uniform Resource Identifiers (URIs). The resources are acted upon by using a set of simple, well-defined operations. The clients and servers exchange representations of resources by using a standardized interface and protocol – typically HTTP.  
 ## Bugs
 No known bugs at this time. 
 

@@ -291,6 +291,16 @@ To try out more HTTP methods, there are four objects to test.
 | **PUT** | `/api/v1/users/<user_id>` | *Updates* a User object |
 | **DELETE** | `/api/v1/users/<user_id>` | *Deletes* a User object |
 
+
+### Place
+| HTTP Method | URI | Description |
+| --- | --- | --- |
+| **GET** | `/api/v1/cities/<city_id>/places` | *Retrieves* the list of all Place objects |
+| **GET** | `/api/v1/places/<place_id>` | *Retrieves* a Place object |
+| **POST** | `/api/v1/cities/<city_id>/places` | *Creates* a Place |
+| **PUT** | `/api/v1/places/<place_id>` | *Updates* a Place object |
+| **DELETE** | `/api/v1/places/<place_id>` | *Deletes* a Place object |
+
 ---
 
 ## Bugs

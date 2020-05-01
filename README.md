@@ -273,6 +273,15 @@ To try out more HTTP methods, there are four objects to test.
 | **PUT** | `/api/v1/states/<state_id>` | *Updates* a State object |
 | **DELETE** | `/api/v1/states/<state_id>` | *Deletes* a State object |
 
+### Amenity
+| HTTP Method | URI | Description |
+| --- | --- | --- |
+| **GET** | `/api/v1/amenities` | *Retrieves* the list of all Amenity objects |
+| **GET** | `/api/v1/amenities/<amenity_id>` | *Retrieves* an Amenity object |
+| **POST** | `/api/v1/amenities` | *Creates* an Amenity |
+| **PUT** | `/api/v1/amenities/<amenity_id>` | *Updates* an Amenity object |
+| **DELETE** | `/api/v1/amenities/<amenity_id>` | *Deletes* an Amenity object |
+
 ---
 ## Bugs
 No known bugs at this time. 

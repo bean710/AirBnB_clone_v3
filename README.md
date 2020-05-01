@@ -301,6 +301,15 @@ To try out more HTTP methods, there are four objects to test.
 | **PUT** | `/api/v1/places/<place_id>` | *Updates* a Place object |
 | **DELETE** | `/api/v1/places/<place_id>` | *Deletes* a Place object |
 
+### Review
+| HTTP Method | URI | Description |
+| --- | --- | --- |
+| **GET** | `/api/v1/places/<place_id>/reviews` | *Retrieves* the list of all Review objects |
+| **GET** | `/api/v1/reviews/<review_id>` | *Retrieves* a Review object |
+| **POST** | `/api/v1/places/<place_id>/reviews` | *Creates* a Review |
+| **PUT** | `/api/v1/reviews/<review_id>` | *Updates* a Review object |
+| **DELETE** | `/api/v1/reviews/<review_id>` | *Deletes* a Review object |
+
 ---
 
 ## Bugs

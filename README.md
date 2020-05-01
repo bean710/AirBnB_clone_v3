@@ -182,7 +182,7 @@ $ HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost
 ---
 
 #### Get the status
-
+Returns the status of your API  
 *On another Terminal*  
 ```
 $ curl -X GET http://0.0.0.0:5000/api/v1/status

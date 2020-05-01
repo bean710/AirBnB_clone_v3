@@ -195,6 +195,22 @@ $ curl -X GET -s http://0.0.0.0:5000/api/v1/status -vvv 2>&1 | grep Content-Type
 $
 ```
 
+#### Stats
+Retrieves the number of each objects by type  
+*On another Terminal*  
+```
+$ curl -X GET http://0.0.0.0:5000/api/v1/stats
+{
+  "amenities": 47, 
+  "cities": 36, 
+  "places": 154, 
+  "reviews": 718, 
+  "states": 27, 
+  "users": 31
+}
+$ 
+```
+
 ## Bugs
 No known bugs at this time. 
 

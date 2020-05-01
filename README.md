@@ -282,7 +282,17 @@ To try out more HTTP methods, there are four objects to test.
 | **PUT** | `/api/v1/amenities/<amenity_id>` | *Updates* an Amenity object |
 | **DELETE** | `/api/v1/amenities/<amenity_id>` | *Deletes* an Amenity object |
 
+### User
+| HTTP Method | URI | Description |
+| --- | --- | --- |
+| **GET** | `/api/v1/users` | *Retrieves* the list of all User objects |
+| **GET** | `/api/v1/users/<user_id>` | *Retrieves* a User object |
+| **POST** | `/api/v1/users` | *Creates* a User |
+| **PUT** | `/api/v1/users/<user_id>` | *Updates* a User object |
+| **DELETE** | `/api/v1/users/<user_id>` | *Deletes* a User object |
+
 ---
+
 ## Bugs
 No known bugs at this time. 
 

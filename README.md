@@ -155,6 +155,13 @@ The REST architectural style, data and functionality are considered resources an
 
 All these principles help RESTful applications to be simple, lightweight, and fast.
 
+### Resource Methods
+Another important thing associated with REST is resource methods to be used to perform the desired transition. A large number of people wrongly relate resource methods to HTTP GET/PUT/POST/DELETE methods.
+
+| HTTP Method | Description |
+| ------ | ------ |
+| GET | Retrieve the URIs of the member resources of the collection resource in the response body. |
+
 ## Bugs
 No known bugs at this time. 
 

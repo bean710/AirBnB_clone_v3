@@ -260,7 +260,7 @@ To try out more HTTP methods, there are four objects to test.
 | --- | --- | --- |
 | **GET** | `/api/v1/states/<state_id>/cities` | *Retrieves* the list of all City objects |
 | **GET** | `/api/v1/cities/<city_id>` | *Retrieves* a City object |
-| **POST** | `/api/v1/states/<state_id>/cities` | *Creates* a City |
+| **POST** | `/api/v1/states/<state_id>/cities -H "Content-Type: application/json" -d '{"<key>": "<value>"}'` | *Creates* a City |
 | **PUT** | `/api/v1/cities/<city_id>` | *Updates* a City object |
 | **DELETE** | `/api/v1/cities/<city_id>` | *Deletes* a City object |
 
@@ -269,7 +269,7 @@ To try out more HTTP methods, there are four objects to test.
 | --- | --- | --- |
 | **GET** | `/api/v1/states` | *Retrieves* the list of all State objects |
 | **GET** | `/api/v1/states/<state_id>` | *Retrieves* a State object |
-| **POST** | `/api/v1/states` | *Creates* a State |
+| **POST** | `/api/v1/states -H "Content-Type: application/json" -d '{"<key>": "<value>"}'` | *Creates* a State |
 | **PUT** | `/api/v1/states/<state_id>` | *Updates* a State object |
 | **DELETE** | `/api/v1/states/<state_id>` | *Deletes* a State object |
 
@@ -278,7 +278,7 @@ To try out more HTTP methods, there are four objects to test.
 | --- | --- | --- |
 | **GET** | `/api/v1/amenities` | *Retrieves* the list of all Amenity objects |
 | **GET** | `/api/v1/amenities/<amenity_id>` | *Retrieves* an Amenity object |
-| **POST** | `/api/v1/amenities` | *Creates* an Amenity |
+| **POST** | `/api/v1/amenities -H "Content-Type: application/json" -d '{"<key>": "<value>"}'` | *Creates* an Amenity |
 | **PUT** | `/api/v1/amenities/<amenity_id>` | *Updates* an Amenity object |
 | **DELETE** | `/api/v1/amenities/<amenity_id>` | *Deletes* an Amenity object |
 
@@ -287,7 +287,7 @@ To try out more HTTP methods, there are four objects to test.
 | --- | --- | --- |
 | **GET** | `/api/v1/users` | *Retrieves* the list of all User objects |
 | **GET** | `/api/v1/users/<user_id>` | *Retrieves* a User object |
-| **POST** | `/api/v1/users` | *Creates* a User |
+| **POST** | `/api/v1/users -H "Content-Type: application/json" -d '{"<key>": "<value>"}'` | *Creates* a User |
 | **PUT** | `/api/v1/users/<user_id>` | *Updates* a User object |
 | **DELETE** | `/api/v1/users/<user_id>` | *Deletes* a User object |
 
@@ -297,7 +297,7 @@ To try out more HTTP methods, there are four objects to test.
 | --- | --- | --- |
 | **GET** | `/api/v1/cities/<city_id>/places` | *Retrieves* the list of all Place objects |
 | **GET** | `/api/v1/places/<place_id>` | *Retrieves* a Place object |
-| **POST** | `/api/v1/cities/<city_id>/places` | *Creates* a Place |
+| **POST** | `/api/v1/cities/<city_id>/places -H "Content-Type: application/json" -d '{"<key>": "<value>"}'` | *Creates* a Place |
 | **PUT** | `/api/v1/places/<place_id>` | *Updates* a Place object |
 | **DELETE** | `/api/v1/places/<place_id>` | *Deletes* a Place object |
 
@@ -306,7 +306,7 @@ To try out more HTTP methods, there are four objects to test.
 | --- | --- | --- |
 | **GET** | `/api/v1/places/<place_id>/reviews` | *Retrieves* the list of all Review objects |
 | **GET** | `/api/v1/reviews/<review_id>` | *Retrieves* a Review object |
-| **POST** | `/api/v1/places/<place_id>/reviews` | *Creates* a Review |
+| **POST** | `/api/v1/places/<place_id>/reviews -H "Content-Type: application/json" -d '{"<key>": "<value>"}'` | *Creates* a Review |
 | **PUT** | `/api/v1/reviews/<review_id>` | *Updates* a Review object |
 | **DELETE** | `/api/v1/reviews/<review_id>` | *Deletes* a Review object |
 

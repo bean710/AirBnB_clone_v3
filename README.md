@@ -155,16 +155,17 @@ The REST architectural style, data and functionality are considered resources an
 
 All these principles help RESTful applications to be simple, lightweight, and fast.
 
-### Resource Methods
-Another important thing associated with REST is resource methods to be used to perform the desired transition. A large number of people wrongly relate resource methods to HTTP GET/PUT/POST/DELETE methods.
+#### Resource Methods
+Another important thing associated with REST is *resource methods* to be used to perform the desired transition. A large number of people wrongly relate resource methods to HTTP **GET/PUT/POST/DELETE** methods.
 
 | HTTP Method | Description |
 | ------ | ------ |
-| GET | Retrieve the URIs of the member resources of the collection resource in the response body. |
-| POST | Create a member resource in the collection resource using the instructions in the request body. The URI of the created member resource is automatically assigned and returned in the response Location header field. |
-| PUT | Replace all the representations of the member resources of the collection resource with the representation in the request body, or create the collection resource if it does not exist. |
-| PATCH | Update all the representations of the member resources of the collection resource using the instructions in the request body, or may create the collection resource if it does not exist. |
-| DELETE | Delete all the representations of the member resources of the collection resource. |
+| **GET** | *Retrieve* the URIs of the member resources of the collection resource in the response body. |
+| **POST** | *Creat*e a member resource in the collection resource using the instructions in the request body. The URI of the created member resource is automatically assigned and returned in the response Location header field. |
+| **PUT** | *Replace* all the representations of the member resources of the collection resource with the representation in the request body, or create the collection resource if it does not exist. |
+| **PATCH** | *Update* all the representations of the member resources of the collection resource using the instructions in the request body, or may create the collection resource if it does not exist. |
+| **DELETE** | *Delete* all the representations of the member resources of the collection resource. |
+
 ## Bugs
 No known bugs at this time. 
 

@@ -245,6 +245,17 @@ $ curl -X GET http://0.0.0.0:5000/api/v1/nop -vvv
 $ 
 ```
 
+---
+
+To try out more HTTP methods, there are four objects to test.
+- State
+- City
+- Amenity
+- User
+- Place
+- Reviews
+
+
 ## Bugs
 No known bugs at this time. 
 

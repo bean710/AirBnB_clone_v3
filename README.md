@@ -154,8 +154,7 @@ EOF  all  create  destroy  help  quit  show  update
 No known bugs at this time. 
 
 ## Authors - Version 3
-Kevin Apostol - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/apostolkev)
-
+Kevin Apostol - [Github](https://github.com/kevapostol) / [Twitter](https://twitter.com/apostolkev)  
 Benjamin Keener - [Github](https://github.com/bean710) / [Twitter](https://twitter.com/TheBenKeener)
 
 ## Authors - Version 2

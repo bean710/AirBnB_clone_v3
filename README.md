@@ -255,7 +255,16 @@ To try out more HTTP methods, there are four objects to test.
 - Place
 - Reviews
 
+### State
+| HTTP Method | URI | Description |
+| --- | --- | --- |
+| **GET** | `/api/v1/states` | *Retrieves* the list of all State objects |
+| **GET** | `/api/v1/states/<state_id>` | *Retrieves* a State object |
+| **POST** | `/api/v1/states` | *Creates* a State |
+| **PUT** | `/api/v1/states/<state_id>` | *Updates* a State object |
+| **DELETE** | `/api/v1/states/<state_id>` | *Deletes* a State object |
 
+---
 ## Bugs
 No known bugs at this time. 
 

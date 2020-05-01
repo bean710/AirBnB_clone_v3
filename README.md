@@ -163,6 +163,7 @@ Another important thing associated with REST is resource methods to be used to p
 | GET | Retrieve the URIs of the member resources of the collection resource in the response body. |
 | POST | Create a member resource in the collection resource using the instructions in the request body. The URI of the created member resource is automatically assigned and returned in the response Location header field. |
 | PUT | Replace all the representations of the member resources of the collection resource with the representation in the request body, or create the collection resource if it does not exist. |
+| PATCH |  |
 
 ## Bugs
 No known bugs at this time. 
